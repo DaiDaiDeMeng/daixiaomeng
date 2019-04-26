@@ -1,0 +1,91 @@
+﻿<HTML>
+<HEAD>
+<TITLE></TITLE>
+<meta charset="utf-8" />
+<style>
+div{text-align:center;}
+button{background:url(images/btn2.jpg);}
+#div1{margin:auto;width:600px;height:842px;background:url(images/bg.jpg);
+      }
+#div2{margin:auto;width:600px;height:222px;background:url(images/bg2.jpg);
+      }
+#disp{width:100%;height:600px;font-size: 16px;color:black;text-align: right;
+	text-shadow:#fff 0 1px 0,#fff 0 -1px 0;}
+
+</style>
+<script>
+	
+</script>
+</HEAD>
+<BODY>
+<h2>1．查找素数:</h2>
+<div id="div1">
+	<button id="su">查找素数</button><hr>
+	<div id="disp">
+		这里显示素数，每行5个
+	</div><hr>
+</DIV>
+<h2>2.查找水仙花数:</h2>
+<div id="div2">
+	<button id="water"> 查找水仙花数</button><hr>
+	<div id="demo">
+		这里显示水仙花数
+	</div>
+	<hr>
+
+</div>
+<script type="text/javascript">
+
+	document.getElementById("su").onclick = function(){
+		
+		var p = 0;
+		var h = "";
+		var n = 999;
+		fan:while (n<=2000) {
+		    n += 1;
+		    for (var i = 2; i < n; i++) {
+		        if (n % i == 0) {
+		            continue fan;
+		        }
+		    }
+		    h += n;
+        h += " ";
+        p++;
+        if(p == 5){
+    		h += "  <br>";
+    		p = 0;
+        }
+		}
+		document.getElementById("disp").innerHTML = h;
+	}
+
+	document.getElementById("water").onclick = function(){
+		
+		var ma = " ";
+		for (var a = 100;a<=999 ;a++) {
+			
+			var number = a;
+			var he = 0;
+			number = number.toString();			
+			for(var i = 0 ; i<number.length ; i++){
+				he += Math.pow(parseInt(number[i]),3);
+				
+			}
+			if(he == a){
+				ma += " "; 
+				ma += a;			
+			}
+				
+			he = 0;
+		}
+
+		document.getElementById("demo").innerHTML = ma;
+	}
+
+	
+ 
+			
+		
+</script>
+</BODY>
+</HTML>

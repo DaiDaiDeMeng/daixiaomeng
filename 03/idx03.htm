@@ -1,0 +1,139 @@
+﻿<HTML>
+<HEAD>
+<TITLE></TITLE>
+<meta charset="utf-8" />
+<style>
+td{font-size:12px; text-decoration:none;}
+#div1{margin:auto;width:550px;height:800px;background:url(images/bg.jpg);
+     padding: 50px;color:#ff8c11;}
+div,td{text-align:center;}
+button{background:url(images/btn2.jpg);}
+#yw,#sx,#zf{color:blue;font-size:20px;}
+#div2{margin:auto;width:620px;height:342px;background:url(images/bg2.jpg);
+      padding:20px 40px;}
+#disp{width:100%;height:202px;text-align: left;font-size: 16px;color:orangered;
+	text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;}
+#disp{
+	text-align: left;
+}
+</style>
+<script>
+
+</script>
+</HEAD>
+<BODY>
+<h2>1．成绩录入页面编写:</h2>
+<div id="div1">
+	<h2 align="center">成绩录入</h2><hr>
+<table width="100%" height="40px">
+	 		<tr>
+	 			<td id="yw" width="33%">语文最高分</td>
+	 			<td id="sx" width="33%">数学最高分</td>
+	 			<td id="zf" >总分最高分</td>
+	 		</tr>
+</table>
+<table width="100%" height="500px" border="1" id="biao1">
+	<tr height="40px" id="tr1">
+	 <th>姓名</th><th>语文</th><th>数学</th><th>总分</th><th>等级</th>
+	</tr>
+	
+	<tr id="addtr">
+		<td colspan="5">
+			
+		</td>
+		
+	</tr>
+</table>
+<table  width="100%" height="50px">
+	<tr>
+	 <td><input placeholder="姓名" type="text" id="t1" /></td>
+	 <td><input placeholder="语文" type="text" id="t2"></td>
+	 <td><input placeholder="数学" type="text" id="t3"/></td>
+	
+     <td><button id="addnumber">添加</button></td>
+	</tr>
+</table>
+</DIV>
+<h2>2.生成9 × 9 乘法表:</h2>
+<div id="div2">
+	<h3 align="center">9 × 9 乘法表</h3><hr>
+	<div id="disp"></div>
+	<hr>
+<button id="cheng">生成乘法表</button> 
+</div>
+
+<script type="text/javascript">
+	var name,dengji;
+	var zong = 0
+	var chinese = 0;
+	var cmath = 0;
+	var maxc = 0;
+	var maxm = 0;
+	var maxz = 0;
+	document.getElementById("addnumber").onclick = function(){
+		var dengj;
+		var t1 = document.getElementById("addtr");
+		name = document.getElementById("t1").value;
+		chinese = parseInt(document.getElementById("t2").value);
+		cmath = parseInt(document.getElementById("t3").value);
+		zong = chinese + cmath;
+		a
+		if(chinese > maxc)
+		maxc = chinese;
+		if(cmath > maxm)
+		maxm = cmath;
+		if(zong > maxz)
+		maxz = zong;
+		document.getElementById("yw").innerHTML = "语文最高分 " + maxc;
+		document.getElementById("sx").innerHTML = "数学最高分 " + maxm;
+		document.getElementById("zf").innerHTML = "总分最高分 " + maxz;
+		if(zong >= 90)
+		dengj = '优秀';
+		else if(zong >= 80)
+		dengj = '良好';
+		else if(zong >=70)
+		dengj = '中等';
+		else if(zong >= 60)
+		dengj = '及格';
+		else
+		dengj = '不及格';
+		var s1 = "<tr height=40px>"
+		s1 += "<td>"
+		s1 += name;
+		s1 += "</td>"
+		
+		s1 += "<td>"
+		s1 += chinese;
+		s1 += "</td>"
+		
+		s1 += "<td>"
+		s1 += cmath;
+		s1 += "</td>"
+		
+		s1 += "<td>"
+		s1 += zong;
+		s1 += "</td>"
+		
+		s1 += "<td>"
+		s1 += dengj;
+		s1 += "</td>"
+
+		s1 += "</tr>"
+		s1 += '<tr id="addtr"><td colspan="5"></td></tr>';
+		t1.outerHTML = s1;
+		}
+	document.getElementById("cheng").onclick = function(){
+		var a,b;
+		var s1 = "";
+		for(a=1 ; a<=9 ;a++){
+			
+			for(b=1 ; b<=a ;b++){
+				s1 += a + "*" + b + "=" +  a*b + " ";
+			}
+			s1 += "</br>";
+		}
+		document.getElementById("disp").innerHTML = s1;
+	}
+</script>
+</BODY>
+</HTML>

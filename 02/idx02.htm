@@ -1,0 +1,101 @@
+﻿<HTML>
+<HEAD>
+<TITLE></TITLE>
+<meta charset="utf-8" />
+
+<style>
+	
+td,a,p{font-size:12px; text-decoration:none;color:blue;}
+#div1{margin:auto;width:318px;height:300px;}
+input{width:145px;height:32px;border:none;background-color:transparent;}
+td{text-align:center;}
+button{background:url(images/btn.jpg);}
+#b1{width:310px;height:40px;font-size:20px;}
+#disp,#div2,#div3{margin:auto;width:318px}
+</style>
+
+</HEAD>
+<BODY>
+<h2>1．利息计算器编写</h2>
+<div id="div1">
+<table id="__01" width="318" height="300" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<img src="images/tm21_01.jpg" width="318" height="49" alt=""></td>
+	</tr>
+	<tr>
+		<td background="images/tm21_02.jpg" width="318" height="52"><input type="text" id="benjin" value=""></td>
+	</tr>
+	<tr>
+		<td background="images/tm21_03.jpg" width="318" height="52"><input type="text" id="lilv" value=""></td>
+	</tr>
+	<tr>
+		<td background="images/tm21_04.jpg" width="318" height="52" ><input type="text" id="cunxi" value=""></td>
+	</tr>
+	<tr>
+		<td background="images/tm21_05.jpg" width="318" height="52" ><input type="text" id="lixi"   readonly></td>
+	</tr>
+	<tr>
+		<td height="43px" bgcolor="#f0ef00">
+			<button id="b1" onclick="jisuan()">计 算</button></td>
+	</tr>
+</table>
+</DIV>
+<h2>2.动态生成标签</h2>
+<div id="disp">
+ 在这里生成动态标签
+ 图片素材<img  id="tu"> 
+</div>
+<div id="div2">
+<button onclick="tupian()" >生成图片</button> 
+<button id="wenben">生成文本区域</button>
+<button id="biaoti">生成标题</button>
+</div>
+   <h2>3.修改样式</h2>
+    <div id="div3">
+    <p id="demo">测试文本</p>
+    <button id="big" >字体变大</button> 
+   <button id="sort">字体变小</button>
+   <button id="blue">蓝色</button>
+   <button id="red">红色</button>
+   </div>
+   <script type="text/javascript">
+   	var tsize = 12;
+   	function jisuan(){
+   		var bj = document.getElementById("benjin");
+	   	var lv = document.getElementById("lilv");
+	   	var cx = document.getElementById("cunxi");
+	   	var lx = document.getElementById("lixi");
+   		lx.value = bj.value * lv.value * cx.value/100;
+   		
+   	}
+   	function tupian(){
+   		
+   		disp.innerHTML = "<image src='images/1.jpg'>"
+   	}
+   	document.getElementById("wenben").onclick = function(){
+   		disp.innerHTML ="<textarea rows='5' cols='60'>我是一个文本框。</textarea>"
+   	}
+   	document.getElementById("biaoti").onclick = function(){
+   		disp.innerHTML = "<h1>这是标题</h1>"
+   	}
+   	document.getElementById("big").onclick = function(){
+   		
+   		document.getElementById("demo").style.fontSize =tsize + 5 ;
+   		tsize +=5 ;
+   	}
+   	
+   	document.getElementById("sort").onclick = function(){
+   		
+   		document.getElementById("demo").style.fontSize =tsize - 5 ;
+   		tsize -=5 ;
+   	}
+	document.getElementById("red").onclick = function () {
+        document.getElementById("demo").style.color = "red";
+    }
+    document.getElementById("blue").onclick = function () {
+        document.getElementById("demo").style.color = "blue";
+    }
+   </script>
+</BODY>
+</HTML>

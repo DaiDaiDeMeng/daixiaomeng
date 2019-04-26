@@ -1,0 +1,200 @@
+﻿<html>
+<head>
+<title>jquery练习</title>
+<meta charset="utf-8">
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    ul>li {
+        list-style-type: none;
+    }
+
+    #banner {
+        width: 400px;
+        height: 240px;
+        overflow: hidden;
+    }
+
+    #banner ul {
+        width: 2000px;
+        overflow: hidden;
+    }
+
+    #banner ul>li {
+        width: 400px;
+        height: 240px;
+        float: left;
+    }
+
+    .left {
+        top: -200px;
+        position: relative;
+        opacity: 0.4;
+    }
+
+    .right {
+        top: -400px;
+        left: 300px;
+        position: relative;
+        opacity: 0.4;
+    }
+
+    .left:hover,.right:hover {
+        opacity: 1;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    div.box p {
+        width: 0;
+        height: 2px;
+        font-size: 0;
+        border: 6px solid;
+        border-color: #fff #0f0 #fff #fff;
+        margin-top: 5px;
+        float: left;
+    }
+
+    div.box b {
+        background: #0f0;
+        border-radius: 5px;
+        padding: 5px;
+        float: left;
+    }
+
+    div.box_r p {
+        width: 0;
+        height: 2px;
+        font-size: 0;
+        border: 6px solid;
+        border-color: #fff #fff #fff #0f0;
+        margin-top: 5px;
+        float: left;
+    }
+
+    div.box_r b {
+        width: 170px;
+        background: #0f0;
+        border-radius: 5px;
+        padding: 5px;
+        float: right;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .box {
+        background: url(images/hd.jpg) no-repeat;
+        padding-left: 40px;
+        width: 200px;
+        clear: both;
+        height: 40px;
+        text-align: left;
+    }
+
+    .box_r {
+        background: url(images/jqr.jpg) no-repeat top right;
+        padding-right: 40px;
+        width: 200px;
+        clear: both;
+        height: 40px;
+        text-align: right;
+    }
+
+    div i {
+        display: block;
+        color: gray;
+    }
+
+    #message {
+        width: 260px;
+        margin: auto;
+        height: 600px;
+        overflow: scroll;
+        border: 1px solid blue;
+    }
+
+    #foot {
+        width: 260px;
+        margin: auto;
+    }
+</style> 
+<script>
+	$(function(){
+		$('.right').click(function(){
+			$("#banner ul").animate({marginLeft:"-400px"},600,function(){
+				$("banner ul>li").eq(0).appendTo($("#banner ul"));
+				$("#banner ul").css('marginLeft','0px');
+			})
+		})
+		$('.left').click(function(){
+			$("#banner ul").css('marginLeft','-400px');
+			$("banner ul>li").eq(4).prependTo($("#banner ul"));
+			$("banner ul").animate({marginLeft:"0px"},600);
+			
+		})
+		$("#nav dl").click(function(){
+			$("#nav dl.disp").removeClass("disp");
+			$(this).addClass("diap");
+		})
+		setInterval(function(){
+			$('.right').click();},5000);
+		
+		$("#sendbtn").click(function(){
+			var txt=$("#sendtxt").val();
+			if(txt){
+			    //聊天
+				$("sendtxt").val("");
+				var dl=new Date();
+				var txt2="<div class='box'><i>"+dl.toLocaleTimeString()+"</i><p></p><b>"+txt+"</b></div>";
+				$("#message").append(txt2);
+				$("#message").scrollTop($('#message').height());
+				var url="http://www.tuling123.com/openapi/api?key=fb8462e3feae43caa061fcd705bac1b7&info="+txt;
+				$.get(url,function(data){
+					var dl=new Date();
+					var txt="<div class='box_r'><i>"+dl.toLocaleTimeString()+"</i><p></p><b>"+data.text+"</b></div>";
+					$("#message").append(txt);
+					$("#message").scrollTop($('#message').height());
+				});
+			}
+		});
+		
+		
+	})
+</script>
+</head>
+<body>
+		
+    <div id="banner">
+        <ul>
+            <li><img src="images/22.jpg" alt="" width="400px" /></li>
+            <li><img src="images/23.jpg" alt="" width="400px" /></li>
+            <li><img src="images/24.jpg" alt="" width="400px" /></li>
+            <li><img src="images/25.jpg" alt="" width="400px" /></li>
+            <li><img src="images/26.jpg" alt="" width="400px" /></li>
+        </ul>
+        <div class="left"><img src="images/left.gif"></div>
+        <div class="right"><img src="images/right.gif"></div>
+    </div>
+<br>
+
+<body>
+<div id="message">
+<img src="images/hd.jpg" style="float: left">
+<img src="images/jqr.jpg"   style="float: right"/>
+    <br>
+<h2 >图灵机器人api</h2>
+
+</div>
+<div id="foot">
+	<input type="text" id="sendtxt"/><button id="sendbtn">发送</button>
+</div>
+</body>
+
+</html>
